@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: reex-inmobiliaria
+    runtime: node
+    plan: free
+    autoDeploy: true
+    buildCommand: npm ci --include=dev && npx prisma generate && npx prisma migrate deploy && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: reex-inmobiliaria-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: DEBUG_MODE
+        value: "true"
+      - key: RUN_SEED_ON_DEPLOY
+        value: "false"
+      - key: VITE_DEBUG_MODE
+        value: "false"
+      - key: VITE_CONTACT_TO
+        value: reex.urquiza@gmail.com
+      - key: VITE_CONTACT_SITE
+        value: REEX Inmobiliaria
+
+databases:
+  - name: reex-inmobiliaria-db
+    plan: free

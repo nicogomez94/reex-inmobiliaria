@@ -1,0 +1,29 @@
+{
+  "name": "reex-inmobiliaria",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "npm run dev --workspace client",
+    "dev:server": "npm run dev --workspace server",
+    "build": "npm run build --workspace client",
+    "start": "bash server/scripts/render-start.sh",
+    "db:generate": "npm run prisma:generate --workspace server",
+    "db:migrate": "npm run prisma:migrate --workspace server",
+    "db:seed": "npm run prisma:seed --workspace server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prisma": "^6.7.0"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "prisma": {
+    "schema": "server/prisma/schema.prisma"
+  }
+}

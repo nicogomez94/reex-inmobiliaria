@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  PROPIEDADES
+  EMPRENDIMIENTOS
+}
+
+enum OperationStatus {
+  EN_VENTA
+  EN_ALQUILER
+  ALQUILER_TEMPORARIO
+  EN_CONSTRUCCION
+  EN_POZO
+  LISTO_PARA_VIVIR
+}
+
+enum Currency {
+  USD
+  ARS
+}
+
+model AdminUser {
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Property {
+  id              Int             @id @default(autoincrement())
+  slug            String          @unique
+  title           String
+  description     String
+  published       Boolean         @default(true)
+  category        Category
+  operationStatus OperationStatus
+  price           Decimal         @db.Decimal(12, 2)
+  currency        Currency        @default(USD)
+  totalM2         Int
+  coveredM2       Int
+  rooms           Int
+  bathrooms       Int
+  garageSpots     Int             @default(0)
+  address         String
+  neighborhood    String
+  city            String
+  branch          String          @default("Capital Federal")
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  images          PropertyImage[]
+}
+
+model PropertyImage {
+  id         Int      @id @default(autoincrement())
+  url        String
+  alt        String?
+  sortOrder  Int      @default(0)
+  createdAt  DateTime @default(now())
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  propertyId Int
+}
