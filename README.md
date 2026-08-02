@@ -28,12 +28,16 @@ Copiá las variables de ejemplo de `client/.env.example` y
 El archivo `render.yaml` define:
 
 - Un único Web Service que compila el frontend y sirve la API.
-- Una base PostgreSQL independiente.
+- Una base PostgreSQL lógica independiente dentro de la instancia disponible
+  en la cuenta de Render.
 - Migraciones Prisma durante cada build.
 - Health check en `/api/health`.
 
 El destinatario del formulario se configura en Render con
 `VITE_CONTACT_TO`.
+
+`DATABASE_URL` se configura como secreto del servicio y apunta exclusivamente
+a la base lógica `reex_inmobiliaria`.
 
 ## Datos públicos
 
