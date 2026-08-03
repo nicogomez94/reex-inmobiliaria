@@ -1,96 +1,11 @@
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
+import { argenpropProperties } from "../src/data/argenpropProperties.js";
 
 dotenv.config();
 
 const prisma = new PrismaClient();
-
-const debugProperties = [
-  {
-    title: "PH con patio en Villa Urquiza",
-    description:
-      "Casa luminosa con ambientes amplios, patio y cocina integrada. Una opción cómoda para vivir cerca del centro.",
-    category: "PROPIEDADES",
-    operationStatus: "EN_VENTA",
-    price: "185000",
-    currency: "USD",
-    totalM2: 78,
-    coveredM2: 70,
-    rooms: 3,
-    bathrooms: 2,
-    garageSpots: 1,
-    address: "Ubicación reservada",
-    neighborhood: "Villa Urquiza",
-    city: "Ciudad de Buenos Aires",
-    branch: "Villa Urquiza",
-    published: true,
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80",
-        alt: "Living de PH en Villa Urquiza",
-        sortOrder: 0
-      },
-      {
-        url: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80",
-        alt: "Cocina moderna",
-        sortOrder: 1
-      }
-    ]
-  },
-  {
-    title: "Casa con jardín en Villa Urquiza",
-    description:
-      "Casa con jardín, ambientes cómodos y excelente orientación. Disponible para alquiler residencial.",
-    category: "PROPIEDADES",
-    operationStatus: "EN_ALQUILER",
-    price: "1200",
-    currency: "USD",
-    totalM2: 360,
-    coveredM2: 280,
-    rooms: 5,
-    bathrooms: 3,
-    garageSpots: 2,
-    address: "Ubicación reservada",
-    neighborhood: "Villa Urquiza",
-    city: "Ciudad de Buenos Aires",
-    branch: "Villa Urquiza",
-    published: true,
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1600607687644-c94bf7f28f89?auto=format&fit=crop&w=1200&q=80",
-        alt: "Frente de casa en Villa Urquiza",
-        sortOrder: 0
-      }
-    ]
-  },
-  {
-    title: "Proyecto de departamentos céntricos",
-    description:
-      "Unidades funcionales con excelente ubicación y financiación durante obra.",
-    category: "EMPRENDIMIENTOS",
-    operationStatus: "EN_POZO",
-    price: "89000",
-    currency: "USD",
-    totalM2: 48,
-    coveredM2: 42,
-    rooms: 2,
-    bathrooms: 1,
-    garageSpots: 0,
-    address: "Ubicación reservada",
-    neighborhood: "Villa Urquiza",
-    city: "Ciudad de Buenos Aires",
-    branch: "Villa Urquiza",
-    published: true,
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80",
-        alt: "Proyecto de departamentos en Villa Urquiza",
-        sortOrder: 0
-      }
-    ]
-  }
-];
 
 function slugify(value) {
   return value
@@ -114,23 +29,20 @@ async function upsertAdminUser() {
 }
 
 async function seedDebugProperties() {
-  await prisma.propertyImage.deleteMany();
-  await prisma.property.deleteMany();
+  await prisma.property.deleteMany({
+    where: {
+      title: { in: ["PH con patio en Villa Urquiza", "Casa con jardín en Villa Urquiza", "Proyecto de departamentos céntricos"] }
+    }
+  });
 
-  for (const item of debugProperties) {
+  for (const item of argenpropProperties) {
     const { images, ...property } = item;
-    const slugBase = slugify(property.title);
-    const slug = `${slugBase}-${Math.floor(Math.random() * 100000)}`;
-
-    await prisma.property.create({
-      data: {
-        ...property,
-        slug,
-        images: {
-          create: images
-        }
-      }
-    });
+    const existing = await prisma.property.findFirst({ where: { title: property.title } });
+    if (existing) {
+      await prisma.property.update({ where: { id: existing.id }, data: property });
+      continue;
+    }
+    await prisma.property.create({ data: { ...property, slug: `${slugify(property.title)}-${Math.floor(Math.random() * 100000)}`, images: { create: images } } });
   }
 }
 

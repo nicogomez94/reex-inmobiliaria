@@ -19,7 +19,7 @@ services:
       - key: ADMIN_USERNAME
         value: admin
       - key: ADMIN_PASSWORD
-        generateValue: true
+        value: admin123
       - key: DEBUG_MODE
         value: "true"
       - key: RUN_SEED_ON_DEPLOY
