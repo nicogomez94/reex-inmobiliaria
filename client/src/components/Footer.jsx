@@ -12,7 +12,7 @@ export default function Footer() {
           </span>
           <p className="footer-text">
             Ventas, alquileres, tasaciones y administración de alquileres en
-            Villa Urquiza y alrededores.
+            Ciudad de Buenos Aires y alrededores.
           </p>
           <p className="footer-registration">
             {BRAND.descriptor}<br />

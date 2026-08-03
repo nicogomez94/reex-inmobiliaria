@@ -15,7 +15,7 @@ export default function BranchesPage() {
     <main className="page container info-page">
       <header className="info-hero">
         <p className="section-kicker">SUCURSALES</p>
-        <h1 className="page-title">Encontranos en Villa Urquiza</h1>
+        <h1 className="page-title">Encontranos en la Ciudad de Buenos Aires</h1>
         <p className="page-text">
           Te recibimos para conversar sobre tu próxima operación y darte una
           orientación profesional, clara y personalizada.

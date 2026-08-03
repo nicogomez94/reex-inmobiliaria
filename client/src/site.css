@@ -2270,6 +2270,38 @@ select {
   }
 }
 
+/* Cliente: llevar los bloques claros al degradé rojo institucional. */
+.featured-section,
+.collections-section,
+.home-manifesto {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(225, 19, 27, .12), transparent 28%),
+    linear-gradient(135deg, #fff 0%, #fff7f7 52%, #ffe3e4 100%);
+}
+
+.property-types-section {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(225, 19, 27, .15), transparent 30%),
+    linear-gradient(135deg, #fff7f7 0%, #ffe4e5 100%);
+}
+
+/* Ajuste solicitado por el cliente: el rojo de REEX también aparece en las
+   secciones antes completamente blancas, manteniendo las tarjetas legibles. */
+.featured-section,
+.collections-section,
+.home-manifesto,
+.info-page {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(225, 19, 27, .12), transparent 28%),
+    linear-gradient(135deg, #fff 0%, #fff7f7 52%, #ffe3e4 100%);
+}
+
+.property-types-section {
+  background:
+    radial-gradient(circle at 88% 18%, rgba(225, 19, 27, .15), transparent 30%),
+    linear-gradient(135deg, #fff7f7 0%, #ffe4e5 100%);
+}
+
 :root {
   --bg-dark: #0a0a0a;
   --bg-deep: #f7f4ed;

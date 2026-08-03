@@ -41,7 +41,7 @@ const PILLARS = [
   {
     number: "01",
     title: "Conocimiento local",
-    text: "Conocemos Villa Urquiza y su entorno para orientar cada decisión con información concreta."
+    text: "Conocemos la Ciudad de Buenos Aires y su entorno para orientar cada decisión con información concreta."
   },
   {
     number: "02",
@@ -107,7 +107,7 @@ function HeroContent() {
   return (
     <section className="hero-content container">
       <div className="hero-copy">
-        <p className="hero-kicker">REEX INMOBILIARIA · VILLA URQUIZA</p>
+        <p className="hero-kicker">REEX INMOBILIARIA · CIUDAD DE BUENOS AIRES</p>
         <h1>
           <span>Encontrá el lugar</span>
           <span className="hero-title-accent">para tu próxima historia</span>
@@ -139,7 +139,7 @@ function HeroContent() {
               <i className="fa-solid fa-magnifying-glass" aria-hidden="true" />
               <input
                 type="search"
-                placeholder="Ej: Villa Urquiza, departamento, PH..."
+                placeholder="Ej: Belgrano, departamento, PH..."
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
               />

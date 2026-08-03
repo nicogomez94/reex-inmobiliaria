@@ -38,7 +38,7 @@ export default function ServicesPage() {
         <h1 className="page-title">Todo lo que necesitás en una sola inmobiliaria</h1>
         <p className="page-text">
           Desde la tasación hasta la escritura, ofrecemos un servicio integral para
-          propietarios, inquilinos y compradores en Villa Urquiza y alrededores.
+          propietarios, inquilinos y compradores en toda la Ciudad de Buenos Aires y alrededores.
         </p>
       </header>
 

@@ -13,7 +13,7 @@ const VALUES = [
   },
   {
     title: "Conocimiento real del mercado",
-    text: "Trabajar desde Villa Urquiza nos permite entender los valores, los tiempos y las oportunidades reales de la zona."
+    text: "Trabajar desde Villa Urquiza nos permite entender los valores, los tiempos y las oportunidades reales de la Ciudad de Buenos Aires."
   },
   {
     title: "Acompañamiento hasta el final",
@@ -46,9 +46,10 @@ export default function AboutPage() {
       <section className="info-section">
         <h2 className="section-title">Quiénes somos</h2>
         <p className="page-text">
-          Somos una inmobiliaria con base en Villa Urquiza. Trabajamos en
-          ventas, alquileres, tasaciones y administración de alquileres con
-          atención personalizada y conocimiento concreto del mercado local.
+          Somos una inmobiliaria con base en Villa Urquiza y alcance en toda la
+          Ciudad de Buenos Aires. Trabajamos en ventas, alquileres, tasaciones
+          y administración de alquileres con atención personalizada y
+          conocimiento concreto del mercado local.
         </p>
         <p className="page-text" style={{ marginTop: "1rem" }}>
           Lo que nos diferencia es la dedicación. Cada propiedad recibe una
