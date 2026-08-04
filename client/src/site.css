@@ -3738,3 +3738,35 @@ input:focus, textarea:focus, select:focus { border-color: var(--red); box-shadow
     justify-content: space-between;
   }
 }
+
+/* Pedido del cliente: los fondos claros usan el degradé rojo institucional.
+   Las tarjetas mantienen su superficie clara para conservar el contraste y la
+   lectura de la información. */
+:root {
+  --red-surface-gradient:
+    radial-gradient(circle at 8% 8%, rgba(225, 19, 27, 0.16), transparent 28%),
+    linear-gradient(135deg, #fff3f3 0%, #ffd9db 52%, #f6b0b4 100%);
+}
+
+body,
+.dark-block,
+.featured-section,
+.collections-section,
+.property-types-section,
+.home-manifesto,
+.page,
+.info-page {
+  background: var(--red-surface-gradient);
+}
+
+.home-manifesto blockquote {
+  border-color: rgba(181, 20, 27, 0.3);
+}
+
+.home-manifesto blockquote footer {
+  justify-content: flex-start;
+}
+
+.home-manifesto cite {
+  color: #6e3638;
+}

@@ -396,7 +396,6 @@ export default function HomePage() {
                 <strong> se consigue lo que se negocia.</strong>
               </p>
               <footer>
-                <span>Negocie con nosotros.</span>
                 <cite>{BRAND.fullName} · {BRAND.slogan}</cite>
               </footer>
             </blockquote>
