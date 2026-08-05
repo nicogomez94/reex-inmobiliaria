@@ -3739,28 +3739,87 @@ input:focus, textarea:focus, select:focus { border-color: var(--red); box-shadow
   }
 }
 
-/* Pedido del cliente: los fondos claros usan el degradé rojo institucional.
-   Las tarjetas mantienen su superficie clara para conservar el contraste y la
-   lectura de la información. */
+/* Pedido del cliente: todas las secciones usan el bordó oscuro de la referencia.
+   El degradé vive en el contenedor para que no haya cortes entre secciones; las
+   tarjetas conservan su superficie clara para mantener una lectura cómoda. */
 :root {
   --red-surface-gradient:
-    radial-gradient(circle at 8% 8%, rgba(225, 19, 27, 0.16), transparent 28%),
-    linear-gradient(135deg, #fff3f3 0%, #ffd9db 52%, #f6b0b4 100%);
+    radial-gradient(circle at 88% 14%, rgba(174, 20, 29, 0.34), transparent 34%),
+    radial-gradient(circle at 12% 84%, rgba(113, 8, 14, 0.28), transparent 36%),
+    linear-gradient(120deg, #150506 0%, #35080b 48%, #730d14 100%);
 }
 
 body,
+.hero {
+  background: var(--red-surface-gradient);
+}
+
+/* Una regla antigua dejaba el hero en 80vh y generaba una franja vacía después
+   de que terminaba la imagen. La altura vuelve a depender de su contenido. */
+.hero-content {
+  height: auto;
+}
+
 .dark-block,
 .featured-section,
 .collections-section,
 .property-types-section,
 .home-manifesto,
+.why-choose,
+.home-contact-cta,
 .page,
 .info-page {
-  background: var(--red-surface-gradient);
+  background: transparent;
+}
+
+.hero .why-choose {
+  background: transparent;
+}
+
+.dark-block .section-kicker,
+.page .section-kicker {
+  color: #efc267;
+}
+
+.section-heading-center h2,
+.page > .page-title,
+.page > .page-text,
+.info-hero .page-title,
+.info-hero .page-text {
+  color: #fff;
+}
+
+.section-heading-center > p:last-child,
+.featured-status,
+.featured-empty,
+.listing-empty-search {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.featured-empty,
+.listing-empty-search {
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.featured-all-link a {
+  border-bottom-color: #efc267;
+  color: #fff;
+}
+
+.featured-all-link i {
+  color: #efc267;
 }
 
 .home-manifesto blockquote {
-  border-color: rgba(181, 20, 27, 0.3);
+  border-color: rgba(239, 194, 103, 0.34);
+}
+
+.home-manifesto blockquote > p {
+  color: #fff;
+}
+
+.home-manifesto blockquote strong {
+  color: #ff444c;
 }
 
 .home-manifesto blockquote footer {
@@ -3768,5 +3827,9 @@ body,
 }
 
 .home-manifesto cite {
-  color: #6e3638;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.page {
+  color: #fff;
 }
