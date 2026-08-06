@@ -3,6 +3,7 @@ export const BRAND = {
   fullName: "REEX Inmobiliaria",
   slogan: "Construyendo confianza.",
   descriptor: "Somos profesionales inmobiliarios",
+  registrationNumber: "4224",
   address: "Capdevila 2934",
   neighborhood: "Villa Urquiza",
   city: "Ciudad de Buenos Aires",

@@ -1,20 +1,19 @@
 import { Link } from "react-router-dom";
 import { BRAND } from "../config/brand";
+import BrandIdentity from "./BrandIdentity";
 
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <span className="brand-wordmark footer-wordmark" aria-label={BRAND.fullName}>
-            <strong>REEX</strong>
-            <small>INMOBILIARIA</small>
-          </span>
+          <BrandIdentity footer />
           <p className="footer-text">
             Ventas, alquileres, tasaciones y administración de alquileres en
             Ciudad de Buenos Aires y alrededores.
           </p>
           <p className="footer-registration">
+            CUCICBA · Matrícula N.º {BRAND.registrationNumber}<br />
             {BRAND.descriptor}<br />
             {BRAND.slogan}
           </p>

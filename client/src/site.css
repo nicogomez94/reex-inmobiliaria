@@ -2750,7 +2750,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--red); box-shadow
 .page-text { color: #716e68; font-size: 1rem; line-height: 1.75; }
 .info-hero .page-text { max-width: 720px; margin-top: 18px; }
 .info-section { max-width: 900px; padding: 34px; border-left: 1px solid var(--line); background: #fff; }
-.section-title { margin-bottom: 16px; font-family: "Oswald", sans-serif; font-size: 2rem; font-weight: 500; }
+.section-title { margin-bottom: 16px; font-family: "Oswald", sans-serif; font-size: 2rem; font-weight: 500; color: black; }
 .info-grid { gap: 18px; }
 .info-card {
   position: relative;
@@ -3831,4 +3831,240 @@ body,
 
 .page {
   color: #fff;
+}
+
+/* Identidad institucional: REEX + CUCICBA y matrícula, presente en todos los headers. */
+.brand-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-registration {
+  min-height: 50px;
+  padding-left: 13px;
+  border-left: 1px solid rgba(211, 160, 59, 0.42);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.brand-registration img {
+  width: 39px;
+  height: 44px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.brand-registration > span {
+  display: grid;
+  gap: 3px;
+}
+
+.brand-registration small {
+  color: #efc267;
+  font-size: 0.57rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.brand-registration strong {
+  max-width: 92px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.61rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.brand-identity-footer {
+  width: fit-content;
+  margin-bottom: 18px;
+}
+
+.brand-identity-footer .brand-registration {
+  border-left-color: rgba(255, 255, 255, 0.2);
+}
+
+/* El contenido animado siempre queda visible en mobile, incluso si el navegador
+   pausa IntersectionObserver durante un cambio de tamaño de la barra de URL. */
+@media (max-width: 760px) {
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-visible,
+  .hero.reveal-on-scroll .topbar,
+  .hero.reveal-on-scroll .navbar,
+  .hero.reveal-on-scroll .hero-content,
+  .hero.reveal-on-scroll .hero-overlay {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  .hero {
+    --home-header-height: 80px;
+    --hero-media-height: 100svh;
+    min-height: 100svh;
+  }
+
+  .hero::before,
+  .hero-overlay {
+    top: var(--home-header-height);
+    bottom: 0;
+    height: auto;
+  }
+
+  .hero-content {
+    min-height: calc(100svh - var(--home-header-height));
+    padding: 24px 0;
+    gap: 18px;
+  }
+
+  .hero-copy {
+    width: 100%;
+  }
+
+  .hero-kicker {
+    margin-bottom: 12px;
+    padding: 6px 10px;
+    font-size: 0.59rem;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-content h1 {
+    font-size: 2.55rem;
+    line-height: 0.98;
+  }
+
+  .hero-sub {
+    margin-top: 12px;
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+
+  .hero-search {
+    border-width: 4px;
+    border-radius: 7px;
+  }
+
+  .hero-search-tabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    box-shadow: none;
+  }
+
+  .hero-search-tab {
+    min-width: 0;
+    min-height: 40px;
+    padding: 8px 4px;
+    font-size: 0.68rem;
+  }
+
+  .hero-search-row {
+    min-height: 0;
+    padding: 9px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .hero-search-field {
+    min-height: 58px;
+    padding: 3px 7px 8px;
+    border-right: 0;
+    border-bottom: 1px solid #e5e2dc;
+  }
+
+  .hero-search-field > span {
+    font-size: 0.59rem;
+  }
+
+  .hero-search-field input {
+    font-size: 0.88rem;
+  }
+
+  .hero-search-operation {
+    display: none;
+  }
+
+  .hero-search-btn {
+    width: 100%;
+    min-height: 46px;
+    margin: 0;
+    padding: 0 18px;
+  }
+
+  .hero .navbar {
+    min-height: var(--home-header-height);
+  }
+
+  .hero .brand-wordmark,
+  .brand-wordmark {
+    min-width: 80px;
+    min-height: 48px;
+  }
+
+  .brand-wordmark strong {
+    font-size: 1.42rem;
+  }
+
+  .brand-wordmark small {
+    margin-top: 3px;
+    font-size: 0.37rem;
+  }
+
+  .brand-identity {
+    gap: 8px;
+  }
+
+  .brand-registration {
+    min-height: 42px;
+    padding-left: 8px;
+    gap: 5px;
+  }
+
+  .brand-registration img {
+    width: 31px;
+    height: 36px;
+  }
+
+  .brand-registration small {
+    font-size: 0.48rem;
+  }
+
+  .brand-registration strong {
+    font-size: 0.52rem;
+  }
+}
+
+@media (max-width: 370px), (max-height: 700px) and (max-width: 760px) {
+  .hero-content {
+    padding: 18px 0;
+    gap: 13px;
+  }
+
+  .hero-kicker {
+    margin-bottom: 9px;
+    font-size: 0.54rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-sub {
+    margin-top: 9px;
+    font-size: 0.79rem;
+  }
+
+  .hero-search-field {
+    min-height: 52px;
+  }
+
+  .hero-search-btn {
+    min-height: 42px;
+  }
 }

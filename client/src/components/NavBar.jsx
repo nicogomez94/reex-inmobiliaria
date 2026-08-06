@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { menuStructure } from "../data/menu";
 import { BRAND } from "../config/brand";
+import BrandIdentity from "./BrandIdentity";
 import Footer from "./Footer";
 
 const propertyMenuItems = menuStructure
@@ -70,10 +71,7 @@ function NavContent({ mobileOpen, setMobileOpen }) {
       <div className="nav-shell">
         <nav className="navbar container">
           <Link to="/" className="brand">
-            <span className="brand-wordmark" aria-label={BRAND.fullName}>
-              <strong>REEX</strong>
-              <small>INMOBILIARIA</small>
-            </span>
+            <BrandIdentity />
           </Link>
 
           <ul className="nav-links">
