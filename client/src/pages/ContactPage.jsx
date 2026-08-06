@@ -91,7 +91,7 @@ export default function ContactPage() {
         <h1 className="page-title">Hablemos de tu próxima operación</h1>
         <p className="page-text">
           Estamos para ayudarte a comprar, vender, alquilar o conocer el valor
-          de una propiedad en la Ciudad de Buenos Aires y alrededores.
+          de una propiedad en la Ciudad de Buenos Aires
         </p>
       </header>
 

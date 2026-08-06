@@ -10,7 +10,7 @@ export default function Footer() {
           <BrandIdentity footer />
           <p className="footer-text">
             Ventas, alquileres, tasaciones y administración de alquileres en
-            Ciudad de Buenos Aires y alrededores.
+            Ciudad de Buenos Aires.
           </p>
           <p className="footer-registration">
             CUCICBA · Matrícula N.º {BRAND.registrationNumber}<br />
