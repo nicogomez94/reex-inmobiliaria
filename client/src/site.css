@@ -3089,6 +3089,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--red); box-shadow
   z-index: 8;
   width: min(1040px, 100%);
   margin: 0 auto;
+  display: block;
   border: 6px solid rgba(211, 160, 59, 0.45);
   border-radius: 9px;
   background: rgba(255, 255, 255, 0.42);
@@ -3905,20 +3906,26 @@ body,
 
   .hero {
     --home-header-height: 80px;
-    --hero-media-height: 100svh;
-    min-height: 100svh;
+    --hero-mobile-image-height: 47.7vw;
+    --hero-media-height: auto;
+    min-height: 0;
   }
 
   .hero::before,
   .hero-overlay {
     top: var(--home-header-height);
-    bottom: 0;
-    height: auto;
+    bottom: auto;
+    height: var(--hero-mobile-image-height);
+  }
+
+  .hero::before {
+    background-position: center center;
+    background-size: cover;
   }
 
   .hero-content {
-    min-height: calc(100svh - var(--home-header-height));
-    padding: 24px 0;
+    min-height: 0;
+    padding: calc(var(--hero-mobile-image-height) + 28px) 0 44px;
     gap: 18px;
   }
 
@@ -3945,14 +3952,16 @@ body,
   }
 
   .hero-search {
+    display: block;
     border-width: 4px;
     border-radius: 7px;
+    overflow: hidden;
   }
 
   .hero-search-tabs {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     box-shadow: none;
   }
 
@@ -4042,7 +4051,7 @@ body,
 
 @media (max-width: 370px), (max-height: 700px) and (max-width: 760px) {
   .hero-content {
-    padding: 18px 0;
+    padding: calc(var(--hero-mobile-image-height) + 20px) 0 32px;
     gap: 13px;
   }
 

@@ -8,7 +8,7 @@ import {
 import { api, API_BASE_URL } from "../lib/api";
 import { BRAND } from "../config/brand";
 
-const SEARCH_TABS = ["Comprar", "Alquilar", "Tasar"];
+const SEARCH_TABS = ["Comprar", "Alquilar"];
 
 const PROPERTY_TYPES = [
   {
@@ -89,11 +89,6 @@ function HeroContent() {
   function handleSearch(event) {
     event.preventDefault();
 
-    if (activeTab === 2) {
-      navigate("/tasaciones");
-      return;
-    }
-
     const path = activeTab === 0
       ? "/propiedades/en-venta"
       : "/propiedades/en-alquiler";
@@ -152,7 +147,7 @@ function HeroContent() {
           </div>
 
           <button type="submit" className="hero-search-btn">
-            <span>{activeTab === 2 ? "SOLICITAR TASACIÓN" : "BUSCAR"}</span>
+            <span>BUSCAR</span>
             <i className="fa-solid fa-arrow-right" aria-hidden="true" />
           </button>
         </div>
