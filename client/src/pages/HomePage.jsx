@@ -183,7 +183,7 @@ function FeaturedProperties() {
     <section className="featured-section">
       <div className="container section-heading-center">
         <p className="section-kicker">OPORTUNIDADES DESTACADAS</p>
-        <h2>Propiedades para descubrir</h2>
+        <h2>Propiedades destacadas</h2>
         <p>Una selección actualizada desde nuestro catálogo.</p>
       </div>
 
@@ -236,7 +236,7 @@ function FeaturedProperties() {
         })}
       </div>
 
-      {properties.length > 0 ? (
+      {!loading ? (
         <div className="featured-all-link">
           <Link to="/propiedades/en-venta">
             VER TODAS LAS PROPIEDADES <i className="fa-solid fa-arrow-right" />

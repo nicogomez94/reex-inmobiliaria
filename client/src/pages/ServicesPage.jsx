@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const SERVICES = [
   {
-    title: "Ventas",
-    text: "Gestionamos la venta de tu propiedad con estrategia de pricing, fotografía profesional, pauta digital y seguimiento personalizado en cada etapa del proceso.",
+    title: "Casas",
+    text: "Gestionamos la venta de casas y propiedades con estrategia de pricing, fotografía profesional, pauta digital y seguimiento personalizado en cada etapa del proceso.",
     icon: "fa-house"
   },
   {
