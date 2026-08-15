@@ -4077,3 +4077,26 @@ body,
     min-height: 42px;
   }
 }
+
+/* Home: el CTA queda como transición breve entre el buscador y las categorías. */
+.featured-section {
+  padding: 104px 0 0;
+}
+
+.featured-all-link {
+  margin-top: 0;
+}
+
+.property-types-section {
+  padding: 150px 0 96px;
+}
+
+@media (max-width: 600px) {
+  .featured-section {
+    padding: 72px 0 0;
+  }
+
+  .property-types-section {
+    padding: 96px 0 72px;
+  }
+}

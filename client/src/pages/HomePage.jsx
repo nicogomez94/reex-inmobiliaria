@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   isValidEmail,
   submitContactForm,
   trimFormValues
 } from "../lib/contactForm";
-import { api, API_BASE_URL } from "../lib/api";
 import { BRAND } from "../config/brand";
 
 const SEARCH_TABS = ["Comprar", "Alquilar"];
 
 const PROPERTY_TYPES = [
   {
-    title: "Casas",
+    title: "Ventas",
     subtitle: "Hogares para disfrutar",
     to: "/propiedades/en-venta",
     icon: "fa-house"
@@ -67,19 +66,6 @@ const INITIAL_FORM = {
   message: "",
   consent: false
 };
-
-function formatCurrency(value, currency) {
-  return new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: currency || "USD",
-    maximumFractionDigits: 0
-  }).format(Number(value));
-}
-
-function getImageUrl(image) {
-  if (!image?.url) return "";
-  return image.url.startsWith("http") ? image.url : `${API_BASE_URL}${image.url}`;
-}
 
 function HeroContent() {
   const [activeTab, setActiveTab] = useState(0);
@@ -156,93 +142,14 @@ function HeroContent() {
   );
 }
 
-function FeaturedProperties() {
-  const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let active = true;
-
-    api.listPublicProperties()
-      .then((result) => {
-        if (active) setProperties(result.slice(0, 3));
-      })
-      .catch(() => {
-        if (active) setProperties([]);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
-
+function PropertiesCta() {
   return (
     <section className="featured-section">
-      <div className="container section-heading-center">
-        <p className="section-kicker">OPORTUNIDADES DESTACADAS</p>
-        <h2>Propiedades destacadas</h2>
-        <p>Una selección actualizada desde nuestro catálogo.</p>
+      <div className="featured-all-link">
+        <Link to="/propiedades/en-venta">
+          VER TODAS LAS PROPIEDADES <i className="fa-solid fa-arrow-right" />
+        </Link>
       </div>
-
-      <div className="container featured-grid">
-        {loading ? (
-          <p className="featured-status">Cargando propiedades...</p>
-        ) : null}
-
-        {!loading && properties.length === 0 ? (
-          <div className="featured-empty">
-            <i className="fa-regular fa-building" aria-hidden="true" />
-            <p>Estamos preparando nuevas oportunidades.</p>
-            <Link to="/contacto">CONTANOS QUÉ ESTÁS BUSCANDO</Link>
-          </div>
-        ) : null}
-
-        {properties.map((property) => {
-          const image = property.images?.[0];
-
-          return (
-            <article className="featured-property-card" key={property.id}>
-              <Link
-                className="featured-property-media"
-                to={`/propiedades/ficha/${property.slug}`}
-              >
-                {image ? (
-                  <img src={getImageUrl(image)} alt={image.alt || property.title} />
-                ) : (
-                  <span className="featured-property-placeholder">
-                    <i className="fa-regular fa-image" aria-hidden="true" />
-                  </span>
-                )}
-                <span className="featured-property-badge">
-                  {property.operationStatus === "EN_ALQUILER" ? "ALQUILER" : "VENTA"}
-                </span>
-              </Link>
-              <div className="featured-property-copy">
-                <p>{property.neighborhood} · {property.city}</p>
-                <h3>{property.title}</h3>
-                <div>
-                  <strong>{formatCurrency(property.price, property.currency)}</strong>
-                  <span>{property.rooms} amb. · {property.coveredM2} m²</span>
-                </div>
-                <Link to={`/propiedades/ficha/${property.slug}`}>
-                  VER PROPIEDAD <i className="fa-solid fa-arrow-right" />
-                </Link>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-
-      {!loading ? (
-        <div className="featured-all-link">
-          <Link to="/propiedades/en-venta">
-            VER TODAS LAS PROPIEDADES <i className="fa-solid fa-arrow-right" />
-          </Link>
-        </div>
-      ) : null}
     </section>
   );
 }
@@ -364,7 +271,7 @@ export default function HomePage() {
     <>
       <HeroContent />
       <main className="dark-block">
-        <FeaturedProperties />
+        <PropertiesCta />
 
         <section className="property-types-section">
           <div className="container section-heading-center">
