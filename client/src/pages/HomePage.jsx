@@ -94,7 +94,7 @@ function HeroContent() {
           <span className="hero-title-accent">para tu próxima historia</span>
         </h1>
         <p className="hero-sub">
-          Ventas, alquileres, tasaciones y administración con un equipo
+          Ventas, alquileres, tasaciones y administración de alquileres con un equipo
           profesional que construye confianza.
         </p>
       </div>
